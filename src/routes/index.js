@@ -16,7 +16,7 @@ export default function Routes() {
         },
         {
           path: "/movie/:movieID",
-          children: <MovieDetail />
+          element: <MovieDetail />
         },
         {
           path: "/movieList",

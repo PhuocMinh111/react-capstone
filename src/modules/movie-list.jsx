@@ -10,7 +10,7 @@ export default function MovieList() {
   async function fetchMovieList() {
     const result = await fetchMovieListApi();
     const data = result.data;
-    // console.log();
+    console.log(data.content);
 
     setData(data.content);
   }

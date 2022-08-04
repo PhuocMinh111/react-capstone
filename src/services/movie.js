@@ -6,3 +6,10 @@ export const fetchMovieListApi = () => {
     method: "GET"
   });
 };
+
+export const fetchSingleMovieApi = (id) => {
+  return request({
+    url: `/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`,
+    method: "GET"
+  });
+};
