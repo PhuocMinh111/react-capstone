@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import BackHome from "../../components/backHome/backHome";
 export default function Login() {
   const [value, setValue] = useState({
     taiKhoan: "",
@@ -14,11 +15,7 @@ export default function Login() {
   const handleSubmit = () => {};
   return (
     <>
-      <nav className="navbar p-3 text-center navbar-expand-lg navbar-light bg-light">
-        <Link to="/">
-          <a className="">Home</a>
-        </Link>
-      </nav>
+      <BackHome />
       <form className="w-50 mx-auto my-5" onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Tài khoản</label>
