@@ -1,34 +1,48 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
   return (
-    <nav className="navbar p-3 navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand">Navbar</a>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <a className="navbar-brand" href="#">
+        Navbar
+      </a>
       <button
-        className="navbar-toggler"
+        onClick={() => setOpen(!open)}
+        className={`navbar-toggler ${!open && "collapsed"}`}
         type="button"
         data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
         <span className="navbar-toggler-icon" />
       </button>
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item active">
-            <a className="nav-link">
-              Home <span className="sr-only">(current)</span>
+      <div
+        className={`${!open && "collapse"}  navbar-collapse`}
+        id="navbarNavAltMarkup"
+      >
+        <div className="navbar-nav">
+          <Link to="/">
+            <a className="nav-item nav-link active" href="#">
+              Home
             </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link">Features</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link">Pricing</a>
-          </li>
-        </ul>
+          </Link>
+          <Link to="MovieList">
+            <a className="nav-item nav-link" href="#">
+              Movies
+            </a>
+          </Link>
+          <Link to="/login">
+            <a className="nav-item nav-link" href="#">
+              Login
+            </a>
+          </Link>
+          <a className="nav-item nav-link disabled" href="#">
+            Disabled
+          </a>
+        </div>
       </div>
     </nav>
   );

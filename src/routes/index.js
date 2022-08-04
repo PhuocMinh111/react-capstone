@@ -1,6 +1,7 @@
 import { useRoutes } from "react-router-dom";
-import Home from "../components/home/home";
+import Home from "../pages/home/home";
 import HomeLayout from "../layouts/HomeLayout";
+import Login from "../pages/login/login";
 export default function Routes() {
   const routing = useRoutes([
     {
@@ -9,10 +10,14 @@ export default function Routes() {
       children: [
         {
           path: "/",
-          element: <Home />,
-        },
-      ],
+          element: <Home />
+        }
+      ]
     },
+    {
+      path: "/login",
+      element: <Login />
+    }
   ]);
   return routing;
 }
