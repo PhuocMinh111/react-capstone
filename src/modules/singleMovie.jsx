@@ -2,15 +2,18 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
+import { useSelector } from "react-redux";
 export default function SingleMovie({ movie }) {
   const navigate = useNavigate();
+  const { final } = useSelector((state) => state.langReducer);
   return (
     <Card className="col-lg-3 col-sm-12 mx-2" style={{ width: "18rem" }}>
       {/* <Wrapper> */}
       <Card.Img variant="top" src={movie.hinhAnh} />
       <Card.Body className="card-body">
-        <Card.Title>{movie.tenPhim}</Card.Title>
+        <Card.Title>
+          <span className="text-primary">{final.name}:</span> {movie.tenPhim}
+        </Card.Title>
         <Card.Text className="text">{movie.moTa.slice(0, 100)}</Card.Text>
         <Button
           onClick={() => navigate(`/movie/${movie.maPhim}`)}
@@ -18,7 +21,7 @@ export default function SingleMovie({ movie }) {
           className="ml-auto"
           variant="success"
         >
-          detail
+          {final.detail}
         </Button>
       </Card.Body>
       {/* </Wrapper> */}

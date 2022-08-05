@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 export default function Loader() {
+  const [notFound, setNotFound] = useState(false);
+  const { final } = useSelector((state) => state.langReducer);
+  useEffect(() => {
+    setTimeout(() => {
+      setNotFound(true);
+    }, 5000);
+  }, []);
   return (
     <div
       style={{ height: "30vh" }}
-      className="w-100 d-flex justify-content-center mx-auto"
+      className="w-100 d-flex mt-5 justify-content-center mx-auto"
     >
-      <Wrapper>
-        <div class="lds-dual-ring"></div>
-      </Wrapper>
+      {!notFound ? (
+        <Wrapper>
+          <div class="lds-dual-ring"></div>
+        </Wrapper>
+      ) : (
+        <h5 className="text-danger">{final.notFound} !</h5>
+      )}
     </div>
   );
 }
