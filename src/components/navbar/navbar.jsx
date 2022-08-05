@@ -9,7 +9,10 @@ export default function Navbar() {
   const langState = useSelector((state) => state.langReducer);
   console.log(langState);
   return (
-    <nav className="navbar p-3 navbar-expand-lg navbar-light bg-light">
+    <nav
+      style={{ position: "sticky" }}
+      className="navbar px-3 navbar-expand-lg navbar-light bg-light"
+    >
       <a className="navbar-brand" href="#">
         Navbar
       </a>

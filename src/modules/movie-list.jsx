@@ -16,7 +16,7 @@ export default function MovieList() {
   }
 
   return (
-    <div className="row p-3 mt-5">
+    <div className="row p-4 mt-5">
       <h2 className="mb-3">{final.showing}:</h2>
       {data.map((item) => (
         <SingleMovie key={item.maPhim} movie={item} />

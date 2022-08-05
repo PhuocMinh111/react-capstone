@@ -32,7 +32,7 @@ export default function MovieDetail() {
   }
 
   return movie ? (
-    <Wrapper className="p-lg-5 p-sm-0 row">
+    <Wrapper className="p-lg-5 p-sm-0 p-3 row">
       <div className="col-4">
         <img
           className="img-fluid mt-4 shadow"
