@@ -2,13 +2,8 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 export default function Navbar() {
-  const [isSearch, setSearch] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setSearch;
-  };
   return (
     <nav className="navbar p-3 navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="#">
