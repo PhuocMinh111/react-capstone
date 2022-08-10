@@ -5,34 +5,40 @@ import { fetchSingleMovieApi } from "../../services/movie";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import Youtube from "react-youtube";
+
 export default function MovieDetail() {
   const [movie, setMovie] = useState();
   const [movieId, setMovieId] = useState("");
   const param = useParams();
   const opt = {
-    height: "390",
-    width: "600",
+    height: "290",
+    width: "500",
     playerVars: {
       autoplay: false,
     },
   };
   // const langState = useSelector((state) => state.langState);
   // const { final } = langState;
-  const { state } = useSelector((state) => state.langReducer);
+  const { final } = useSelector((state) => state.langReducer);
   useEffect(() => {
     fetchMovie();
   }, []);
+  console.log(movie);
   async function fetchMovie() {
     const result = await fetchSingleMovieApi(param.movieID);
     const data = await result.data;
     const movieUrl = await data.content.trailer;
-    const trailerId = movieUrl.split("v=")[1] || movieUrl.split("be/")[1];
+    const trailerId =
+      movieUrl.split("v=")[1] ||
+      movieUrl.split("be/")[1] ||
+      movieUrl.split("embed/")[1];
+    console.log(movieUrl);
     setMovieId(trailerId);
     setMovie(data);
   }
 
   return movie ? (
-    <Wrapper className="p-lg-5 p-sm-0 p-3 row">
+    <Wrapper className="p-lg-5 p-sm-0 row">
       <div className="col-4">
         <img
           className="img-fluid mt-4 shadow"
@@ -44,17 +50,13 @@ export default function MovieDetail() {
       <div className="col-8 p-3">
         <h3>{movie.content.tenPhim}</h3>
         <div className="" id="player">
-          {/* <iframe
-            width="560"
-            height="315"
-            src={movie.content.trailer}
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          ></iframe> */}
           <h4 className="d-inline">trailer :</h4>
           {movieId ? <Youtube opts={opt} videoId={movieId} /> : <Loader />}
         </div>
+        <p>
+          <span className="text-success">{final.desc} :</span>
+          {movie.content.moTa}
+        </p>
       </div>
     </Wrapper>
   ) : (

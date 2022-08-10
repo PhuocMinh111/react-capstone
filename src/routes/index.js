@@ -1,9 +1,14 @@
 import { useRoutes } from "react-router-dom";
-import Home from "../pages/home/home";
-import HomeLayout from "../layouts/HomeLayout";
+// import Home from "../pages/home/home";
+// import HomeLayout from "../layouts/HomeLayout";
 import Login from "../pages/login/login";
-import MovieDetail from "../pages/movie-detail/movie-detail";
+// import MovieDetail from "../pages/movie-detail/movie-detail";
 import MovieList from "../modules/movie-list";
+import { lazy } from "react";
+const HomeLayout = lazy(() => import("../layouts/HomeLayout"));
+const Home = lazy(() => import("../pages/home/home"));
+const MovieDetail = lazy(() => import("../pages/movie-detail/movie-detail"));
+
 export default function Routes() {
   const routing = useRoutes([
     {
@@ -12,22 +17,22 @@ export default function Routes() {
       children: [
         {
           path: "/",
-          element: <Home />
+          element: <Home />,
         },
         {
           path: "/movie/:movieID",
-          element: <MovieDetail />
+          element: <MovieDetail />,
         },
         {
           path: "/movieList",
-          children: <MovieList />
-        }
-      ]
+          element: <MovieList />,
+        },
+      ],
     },
     {
       path: "/login",
-      element: <Login />
-    }
+      element: <Login />,
+    },
   ]);
   return routing;
 }

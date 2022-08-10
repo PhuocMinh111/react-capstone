@@ -10,3 +10,10 @@ export const technology = [
   "https://cinestar.com.vn/pictures/moi/8DinhDang/2d.jpg",
   "https://cinestar.com.vn/pictures/moi/8DinhDang/crhistie.png",
 ];
+export const social = [
+  "/img/facebook.png",
+  "/img/instagram.png",
+  "/img/youtube.png",
+];
+export const license =
+  "https://cinestar.com.vn/catalog/view/theme/default/images/dathongbao.png";

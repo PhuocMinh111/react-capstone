@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import fetchBannerApi from "../../services/banner/bannerApi";
 import { Carousel } from "react-bootstrap";
 import styled from "styled-components";
-export default function CarouselComponent() {
+import Slider from "react-slick";
+export default function CarouselComponent({ list }) {
   const [state, setState] = useState([]);
   useEffect(() => {
     fetchBanner();
@@ -12,7 +13,20 @@ export default function CarouselComponent() {
     const data = await result.data;
     setState(data.content);
   }
-  return (
+  console.log(state);
+  return list ? (
+    <Wrapper>
+      <Carousel interval={400}>
+        {list.map((item, index) => {
+          return (
+            <Carousel.Item key={index}>
+              <img className=" d-block" src={item.hinhAnh} />
+            </Carousel.Item>
+          );
+        })}
+      </Carousel>
+    </Wrapper>
+  ) : (
     <Wrapper>
       <Carousel interval={800} style={{ height: "60vh" }} fade>
         {state.map((item) => (

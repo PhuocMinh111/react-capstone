@@ -8,7 +8,7 @@ export default function Loader() {
   useEffect(() => {
     setTimeout(() => {
       setNotFound(true);
-    }, 5000);
+    }, 4000);
   }, []);
   return (
     <div

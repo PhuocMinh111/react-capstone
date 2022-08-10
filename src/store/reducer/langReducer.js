@@ -17,6 +17,7 @@ const INIT_STATE = {
     showing: ["Phim đang chiếu", "Now Showing"],
     notFound: ["Không tìm thấy nội dung", "Content not found"],
     payment: ["Chấp nhận thanh toán", "Payment Accepted by"],
+    social: ["Kết nối với chúng tôi", "contact with us"],
     lang: ["vn", "Eng"],
     flag: ["🇻🇳", "🇬🇧"],
   },

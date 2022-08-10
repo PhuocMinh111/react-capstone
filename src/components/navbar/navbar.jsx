@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
 import { CHANGE_LANG } from "../../constants/constants";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,8 @@ export default function Navbar() {
       className="navbar px-3 navbar-expand-lg navbar-light bg-light"
     >
       <a className="navbar-brand" href="#">
-        Navbar
+        <img style={{ width: "70px" }} src="/img/ticket.png" alt="" />
+        <Brand className="brand">MovieNow</Brand>
       </a>
       <button
         onClick={() => setOpen(!open)}
@@ -46,7 +48,7 @@ export default function Navbar() {
           <NavLink
             className="nav-item nav-link"
             style={{ textDecoration: "none" }}
-            to="MovieList"
+            to="/movieList"
           >
             {langState.final.movie}
           </NavLink>
@@ -86,3 +88,7 @@ export default function Navbar() {
     </nav>
   );
 }
+const Brand = styled.span`
+  font-family: "Pacifico", cursive;
+  font-size: 1.5rem;
+`;
