@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Youtube from "react-youtube";
@@ -10,6 +10,7 @@ import ShowTime from "../../modules/showTime";
 export default function MovieDetail() {
   const [movie, setMovie] = useState();
   const [movieId, setMovieId] = useState("");
+  const imgRef = useRef(null);
   const [heThongRap, setHeThongRap] = useState();
   const param = useParams();
   const opt = {
@@ -22,6 +23,16 @@ export default function MovieDetail() {
   // const langState = useSelector((state) => state.langState);
   // const { final } = langState;
   const { final } = useSelector((state) => state.langReducer);
+  useEffect(() => {
+    document.addEventListener("scroll", scroll);
+    return () => {
+      document.removeEventListener("scroll", scroll);
+    };
+    function scroll() {
+      const scrollY = window.scrollY;
+      console.log(scrollY);
+    }
+  }, []);
   useEffect(() => {
     fetchMovie();
   }, []);
@@ -42,7 +53,8 @@ export default function MovieDetail() {
     <Wrapper className="p-lg-5 p-sm-0 row">
       <div className="col-lg-4 col-sm-12">
         <img
-          className="img-fluid mt-4 shadow"
+          ref={imgRef}
+          className="img-fluid mx-auto mt-4 shadow"
           src={movie.content.hinhAnh}
           alt=""
           srcset=""
