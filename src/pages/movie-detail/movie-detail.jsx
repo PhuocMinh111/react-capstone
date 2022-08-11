@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import Loader from "../../components/loader";
-import { fetchSingleMovieApi } from "../../services/movie";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import Youtube from "react-youtube";
-
+import styled from "styled-components";
+import Loader from "../../components/loader";
+import { fetchShowTimeApi, fetchSingleMovieApi } from "../../services/movie";
+import Accordion from "react-bootstrap/Accordion";
+import ShowTime from "../../modules/showTime";
 export default function MovieDetail() {
   const [movie, setMovie] = useState();
   const [movieId, setMovieId] = useState("");
+  const [heThongRap, setHeThongRap] = useState();
   const param = useParams();
   const opt = {
     height: "290",
@@ -23,7 +25,6 @@ export default function MovieDetail() {
   useEffect(() => {
     fetchMovie();
   }, []);
-  console.log(movie);
   async function fetchMovie() {
     const result = await fetchSingleMovieApi(param.movieID);
     const data = await result.data;
@@ -32,14 +33,14 @@ export default function MovieDetail() {
       movieUrl.split("v=")[1] ||
       movieUrl.split("be/")[1] ||
       movieUrl.split("embed/")[1];
-    console.log(movieUrl);
     setMovieId(trailerId);
     setMovie(data);
   }
 
+  console.log(heThongRap);
   return movie ? (
     <Wrapper className="p-lg-5 p-sm-0 row">
-      <div className="col-4">
+      <div className="col-lg-4 col-sm-12">
         <img
           className="img-fluid mt-4 shadow"
           src={movie.content.hinhAnh}
@@ -47,7 +48,7 @@ export default function MovieDetail() {
           srcset=""
         />
       </div>
-      <div className="col-8 p-3">
+      <div className="col-lg-8 sol-sm-12 p-3">
         <h3>{movie.content.tenPhim}</h3>
         <div className="" id="player">
           <h4 className="d-inline">trailer :</h4>
@@ -57,6 +58,7 @@ export default function MovieDetail() {
           <span className="text-success">{final.desc} :</span>
           {movie.content.moTa}
         </p>
+        <ShowTime />
       </div>
     </Wrapper>
   ) : (

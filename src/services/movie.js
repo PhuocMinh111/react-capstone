@@ -13,3 +13,10 @@ export const fetchSingleMovieApi = (id) => {
     method: "GET",
   });
 };
+
+export const fetchShowTimeApi = (id) => {
+  return request({
+    url: `/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`,
+    method: "GET",
+  });
+};

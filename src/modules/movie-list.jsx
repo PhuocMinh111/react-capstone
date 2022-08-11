@@ -11,7 +11,6 @@ export default function MovieList({ movieToShow }) {
   async function fetchMovieList() {
     const result = await fetchMovieListApi();
     const data = result.data;
-    console.log(movieToShow);
     // if (movieToShow !== null) {
     //   console.log(movieToShow);
     //    setData(data.content.filter((ele, index) => index < movieToShow));
