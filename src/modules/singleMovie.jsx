@@ -8,7 +8,7 @@ export default function SingleMovie({ movie }) {
   const { final } = useSelector((state) => state.langReducer);
   return (
     <Card
-      className="col-lg-3 mx-auto col-sm-12 mx-2"
+      className="col-lg-3 mb-1 mx-auto col-sm-12 mx-2"
       style={{ width: "18rem" }}
     >
       {/* <Wrapper> */}
