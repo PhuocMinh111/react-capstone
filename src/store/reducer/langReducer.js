@@ -20,6 +20,7 @@ const INIT_STATE = {
     payment: ["Chấp nhận thanh toán", "Payment Accepted by"],
     minute: ["Phút", "minute"],
     book: ["Đặt Vé", "book"],
+    more: ["Xem thêm", "more"],
     social: ["Kết nối với chúng tôi", "contact with us"],
     lang: ["vn", "Eng"],
     flag: ["🇻🇳", "🇬🇧"],

@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       <Carousel />
-      <MovieList movieToShow={4} />
+      <MovieList movieToShow={4} btn={true} />
     </div>
   );
 }

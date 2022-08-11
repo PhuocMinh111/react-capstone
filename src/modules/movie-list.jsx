@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { fetchMovieListApi } from "../services/movie";
 import SingleMovie from "./singleMovie";
 import { useSelector } from "react-redux";
-export default function MovieList({ movieToShow }) {
+import { useNavigate } from "react-router-dom";
+export default function MovieList({ movieToShow, btn }) {
   const [data, setData] = useState([]);
   const { final } = useSelector((state) => state.langReducer);
+  const navigate = useNavigate();
   useEffect(() => {
     fetchMovieList();
   }, []);
   async function fetchMovieList() {
     const result = await fetchMovieListApi();
+
     const data = result.data;
     // if (movieToShow !== null) {
     //   console.log(movieToShow);
@@ -24,6 +27,16 @@ export default function MovieList({ movieToShow }) {
       {data.slice(0, movieToShow).map((item, index) => {
         return <SingleMovie key={index} movie={item} />;
       })}
+      {btn && (
+        <div className="d-flex mt-3 justify-content-center mx-auto">
+          <button
+            onClick={() => navigate("/movieList")}
+            className="btn btn-primary"
+          >
+            {final.more}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
