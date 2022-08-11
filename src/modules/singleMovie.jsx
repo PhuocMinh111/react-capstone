@@ -7,7 +7,10 @@ export default function SingleMovie({ movie }) {
   const navigate = useNavigate();
   const { final } = useSelector((state) => state.langReducer);
   return (
-    <Card className="col-lg-3 col-sm-12 mx-2" style={{ width: "18rem" }}>
+    <Card
+      className="col-lg-3 mx-auto col-sm-12 mx-2"
+      style={{ width: "18rem" }}
+    >
       {/* <Wrapper> */}
       <Card.Img variant="top" src={movie.hinhAnh} />
       <Card.Body className="card-body">

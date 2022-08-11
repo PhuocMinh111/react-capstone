@@ -20,7 +20,7 @@ export default function MovieList({ movieToShow }) {
   }
 
   return (
-    <div className="row py-4 mt-5">
+    <div className="row mx-auto py-4 mt-5">
       <h2 className="mb-3">{final.showing}:</h2>
       {data.slice(0, movieToShow).map((item, index) => {
         return <SingleMovie key={index} movie={item} />;

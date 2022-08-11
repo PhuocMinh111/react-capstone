@@ -2,13 +2,24 @@ import React from "react";
 import styled from "styled-components";
 import { payment, technology, social, license } from "../constants/footer";
 import { useSelector } from "react-redux";
-
+import { Link } from "react-router-dom";
 export default function Footer() {
   const { final } = useSelector((state) => state.langReducer);
   return (
     <Wrapper className="py-3 text-center">
       <div className="row mx-auto w-75">
-        <div className="col-lg-3 col-md-12"></div>
+        <div className="col-lg-3 col-md-12">
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <a className="navbar-brand">
+              <img
+                style={{ width: "70px", height: "70px" }}
+                src="/img/ticket.png"
+                alt=""
+              />
+              <div className="brand">MovieNew</div>
+            </a>
+          </Link>
+        </div>
         <div className="col-lg-6 col-md-12">
           <h6 className="text-center mb-2 text-light">{final.technology}</h6>
           <div className="mx-auto">
@@ -73,6 +84,10 @@ const Wrapper = styled.div`
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
+  }
+  .brand {
+    color: white !important;
+    font-size: 50px;
   }
   #license {
     width: auto;

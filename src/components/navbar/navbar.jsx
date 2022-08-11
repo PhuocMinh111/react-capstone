@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -7,6 +7,7 @@ import { CHANGE_LANG } from "../../constants/constants";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const langState = useSelector((state) => state.langReducer);
   console.log(langState);
   return (
@@ -14,10 +15,12 @@ export default function Navbar() {
       style={{ position: "sticky" }}
       className="navbar px-3 navbar-expand-lg navbar-light bg-light"
     >
-      <a className="navbar-brand" href="#">
-        <img style={{ width: "70px" }} src="/img/ticket.png" alt="" />
-        <Brand className="brand">MovieNow</Brand>
-      </a>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <a className="navbar-brand">
+          <img style={{ width: "70px" }} src="/img/ticket.png" alt="" />
+          <Brand className="brand">MovieNew</Brand>
+        </a>
+      </Link>
       <button
         onClick={() => setOpen(!open)}
         className={`navbar-toggler ${!open && "collapsed"}`}

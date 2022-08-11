@@ -9,6 +9,7 @@ const INIT_STATE = {
     date: ["lịch chiếu", "date"],
     name: ["Tên phim", "Movie name"],
     movie: ["Phim", "movie"],
+    img: ["Hình ảnh", "image"],
     footer: ["thiết kế by", "designed by"],
     login: ["Đăng nhập", "login"],
     logout: ["Đăng xuất", "logout"],
@@ -19,9 +20,9 @@ const INIT_STATE = {
     payment: ["Chấp nhận thanh toán", "Payment Accepted by"],
     social: ["Kết nối với chúng tôi", "contact with us"],
     lang: ["vn", "Eng"],
-    flag: ["🇻🇳", "🇬🇧"],
+    flag: ["🇻🇳", "🇬🇧"]
   },
-  final: {},
+  final: {}
 };
 
 export const langReducer = (state = INIT_STATE, { type, payload }) => {
