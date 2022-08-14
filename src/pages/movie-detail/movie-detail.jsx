@@ -23,16 +23,20 @@ export default function MovieDetail() {
   // const langState = useSelector((state) => state.langState);
   // const { final } = langState;
   const { final } = useSelector((state) => state.langReducer);
-  useEffect(() => {
-    document.addEventListener("scroll", scroll);
-    return () => {
-      document.removeEventListener("scroll", scroll);
-    };
-    function scroll() {
-      const scrollY = window.scrollY;
-      console.log(scrollY);
-    }
-  }, []);
+  // // useEffect(() => {
+  // //   document.addEventListener("scroll", scrollImg);
+  // //   return () => {
+  // //     document.removeEventListener("scroll", scrollImg);
+  // //   };
+  // //   function scrollImg() {
+  // //     const scrollY = window.pageYOffset;
+  // //     // const screenW = window.innerWidth;
+  // //     const box = imgRef.current.getBoundingClientRect();
+  // //     console.log(Math.floor(box.y));
+  // //     imgRef.current.style.transform = `translateY(${Math.abs(box.y)})`;
+  // //     // console.log(screenW);
+  // //   }
+  // }, []);
   useEffect(() => {
     fetchMovie();
   }, []);

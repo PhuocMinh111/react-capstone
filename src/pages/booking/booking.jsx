@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Loader from "../../components/loader";
 import Chair from "../../modules/chair";
 import { bookingTicketApi, fetchRoomListApi } from "../../services/booking";
 
@@ -97,6 +98,6 @@ export default function Booking() {
       </div>
     </div>
   ) : (
-    "Loading..."
+    <Loader />
   );
 }

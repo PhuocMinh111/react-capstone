@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export default function Chair(props) {
   const [isSelected, setIsSelected] = useState(false);
-
+  console.log(props.item);
   const populateClass = () => {
     let defaultClass = "ghe";
 
@@ -24,19 +24,21 @@ export default function Chair(props) {
   };
 
   return (
-    <Button
-      disabled={props.item.daDat}
-      onClick={() => {
-        setIsSelected(!isSelected);
-        props.handleSelect(props.item);
-      }}
-      className={populateClass()}
-    >
-      {props.item.tenGhe}
+    <Button>
+      <button
+        disabled={props.item.daDat}
+        onClick={() => {
+          setIsSelected(!isSelected);
+          props.handleSelect(props.item);
+        }}
+        className={populateClass()}
+      >
+        {props.item.tenGhe}
+      </button>
     </Button>
   );
 }
-const Button = styled.button`
+const Button = styled.span`
   .ghe {
     width: 35px;
     height: 35px;
@@ -45,10 +47,10 @@ const Button = styled.button`
     margin-bottom: 3px;
 
     &.gheVip {
-      background-color: pink;
+      background-color: pink !important;
     }
     &.dangDat {
-      background-color: yellow;
+      background-color: yellow !important;
     }
     &.daDat {
       cursor: not-allowed;
