@@ -20,6 +20,7 @@ const INIT_STATE = {
     notFound: ["Không tìm thấy nội dung", "Content not found"],
     payment: ["Chấp nhận thanh toán", "Payment Accepted by"],
     minute: ["Phút", "minute"],
+    hello: ["Xin chào", "Hello"],
     book: ["Đặt Vé", "book"],
     more: ["Xem thêm", "more"],
     social: ["Kết nối với chúng tôi", "contact with us"],

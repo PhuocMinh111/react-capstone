@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BackHome from "../../components/backHome/backHome";
 import { fetchUserLogin } from "../../services/user";
 import { useDispatch } from "react-redux";
@@ -11,6 +11,7 @@ export default function Login() {
     taiKhoan: "",
     matKhau: "",
   });
+  const navigate = useNavigate();
   const { final } = useSelector((state) => state.langReducer);
   const [err, setErr] = useState("");
   const dispatch = useDispatch();
@@ -28,12 +29,12 @@ export default function Login() {
   };
   async function loginUser() {
     try {
-      console.log(value);
       const result = await fetchUserLogin(value);
-      const data = await result.data;
       console.log(result);
+      // const data = await result.data;
       dispatch({ type: SET_USER_LOGIN, payload: result.data.content });
-      localStorage.setItem("USER_ACESS", JSON.stringify(data));
+      localStorage.setItem("USER_ACESS", JSON.stringify(result.data.content));
+      navigate("/");
     } catch (err) {
       const error = err.response.data.content;
       setErr(error);

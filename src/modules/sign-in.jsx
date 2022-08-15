@@ -1,7 +1,8 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import checkValid from "../utils/validation";
-
+import { fetchSignInApi } from "../services/user";
 export default function SignIn(props) {
   const [value, setValue] = useState({});
   const [err, setErr] = useState({});
@@ -15,7 +16,19 @@ export default function SignIn(props) {
     setErr(checkValid(value));
     console.log(err);
     if (Object.keys(err).length > 1) return;
-    setErr({});
+    fetchSignIn();
+    // setErr({});
+  }
+  useEffect(() => {
+    if (Object.keys(err).length > 0) return;
+
+    // setErr({);
+  }, [err]);
+
+  async function fetchSignIn() {
+    if (Object.keys(err).length > 0) return;
+    const result = await fetchSignInApi(value);
+    console.log(result);
   }
   return (
     <form className="w-50 mx-auto my-5" onSubmit={handleSubmit}>
@@ -28,7 +41,7 @@ export default function SignIn(props) {
           className="form-control"
         />
       </div>
-      {err.email && <span className="text-danger">* {err.email}</span>}
+      {err.taiKhoan && <span className="text-danger">* {err.taiKhoan}</span>}
       <div className="form-group">
         <label>Mật khẩu</label>
         <input
@@ -59,6 +72,7 @@ export default function SignIn(props) {
         />
       </div>
       {err.hoTen && <span className="text-danger">* {err.hoTen}</span>}
+      <br />
       <button type="submit" className="btn btn-success mt-3 w-25">
         Sign Up
       </button>{" "}

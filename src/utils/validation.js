@@ -2,12 +2,12 @@ import validator from "validator";
 
 export default function checkValid(state, list = null, isEdit = false) {
   const error = {};
-  const { userName, hoTen, matKhau, email, type } = state;
-  if (!userName) {
-    error.userName = `user name is required`;
+  const { taiKhoan, hoTen, matKhau, email, type } = state;
+  if (!taiKhoan) {
+    error.taiKhoan = `user name is required`;
   } else if (list && !isEdit) {
-    const index = list.findIndex((item) => item.userName === userName);
-    if (index !== -1) error.userName = `user name already existed`;
+    const index = list.findIndex((item) => item.taiKhoan === taiKhoan);
+    if (index !== -1) error.taiKhoan = `user name already existed`;
   }
   if (!hoTen) {
     error.hoTen = `full  name is required`;
@@ -22,6 +22,6 @@ export default function checkValid(state, list = null, isEdit = false) {
   } else if (!validator.isEmail(email)) {
     error.email = `email is not correct`;
   }
-  console.log("error");
+  console.log(error);
   return error;
 }

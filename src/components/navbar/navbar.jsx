@@ -10,6 +10,7 @@ export default function Navbar() {
   const userState = useSelector((state) => state.userReducer);
   const navigate = useNavigate();
   const langState = useSelector((state) => state.langReducer);
+  console.log(userState);
   return (
     <nav
       style={{ position: "sticky" }}
@@ -40,7 +41,7 @@ export default function Navbar() {
         }  navbar-collapse justify-content-end pr-md-3`}
         id="navbarNavAltMarkup"
       >
-        <div className="navbar-nav mr-3 p-3">
+        <div className="navbar-nav  justify-content-end w-50 mr-3 p-3">
           <NavLink
             className="nav-item nav-link"
             style={{ textDecoration: "none" }}
@@ -56,7 +57,10 @@ export default function Navbar() {
             {langState.final.movie}
           </NavLink>
           {userState.user !== null ? (
-            <h2>Hello {userState.user.name}</h2>
+            <a className="nav-item nav-link text-center">
+              {langState.final.hello}{" "}
+              <span className="text-primary">{userState.user.taiKhoan}</span>
+            </a>
           ) : (
             <NavLink
               className="nav-item nav-link"
