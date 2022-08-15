@@ -3,7 +3,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import { CHANGE_LANG } from "../../constants/constants";
+import { CHANGE_LANG, LOG_OUT } from "../../constants/constants";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
@@ -11,6 +11,9 @@ export default function Navbar() {
   const navigate = useNavigate();
   const langState = useSelector((state) => state.langReducer);
   console.log(userState);
+  function logout() {
+    dispatch({ type: LOG_OUT });
+  }
   return (
     <nav
       style={{ position: "sticky" }}
@@ -57,10 +60,15 @@ export default function Navbar() {
             {langState.final.movie}
           </NavLink>
           {userState.user !== null ? (
-            <a className="nav-item nav-link text-center">
-              {langState.final.hello}{" "}
-              <span className="text-primary">{userState.user.taiKhoan}</span>
-            </a>
+            <User>
+              <a className="nav-item nav-link text-center">
+                {langState.final.hello}{" "}
+                <span className="text-primary">{userState.user.taiKhoan}</span>
+              </a>
+              <button onClick={logout} className="btn btn-primary">
+                {langState.final.logout}
+              </button>
+            </User>
           ) : (
             <NavLink
               className="nav-item nav-link"
@@ -102,4 +110,12 @@ export default function Navbar() {
 const Brand = styled.span`
   font-family: "Pacifico", cursive;
   font-size: 1.5rem;
+`;
+const User = styled.div`
+  display: flex;
+  flex-direction: column;
+  button {
+    width: 60%;
+    font-size: 0.7rem;
+  }
 `;
