@@ -110,7 +110,7 @@ export default function ShowTime() {
 const Wrapper = styled.div`
   .cumRap-img {
     width: 15rem !important;
-    height: 100px;
+    height: 100px; 
     object-fit: cover;
   }
   .span {

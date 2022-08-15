@@ -1,12 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { fetchMovieListApi } from "../services/movie";
+import { Button } from "antd";
+import Loader from "./loader";
 export default function Table() {
   const [data, setData] = useState();
   const { final } = useSelector((state) => state.langReducer);
 
-  useEffect(() => {}, []);
-
-  return (
+  useEffect(() => {
+    fetchMovieList();
+  }, []);
+  const deleteMovie = async () => {};
+  const fetchMovieList = async () => {
+    try {
+      const result = await fetchMovieListApi();
+      // const result = await data.result;
+      console.log(result);
+      setData(result.data.content);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  return data ? (
     <div className="card-body">
       <table className="table">
         <thead>
@@ -19,35 +34,47 @@ export default function Table() {
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          {data?.list.map((user, index) => (
-            <tr
-              key={index}
-              className={index % 2 === 0 ? "bg-light" : "bg-secondary"}
-            >
-              <td>{index + 1}</td>
-              <td>{user.userName}</td>
-              <td>{user.fullName}</td>
-              <td>{user.email}</td>
-              <td>{user.phoneNumber}</td>
-              <td>
-                <button
-                  // onClick={() => dispatch({ type: "EDIT", payload: user.id })}
-                  className="btn btn-info mr-2"
-                >
-                  EDIT
-                </button>
-                <button
-                  // onClick={() => dispatch({ type: "DEL", payload: user.id })}
-                  className="btn btn-danger"
-                >
-                  DELETE
-                </button>
-              </td>
-            </tr>
-          ))}
+        <tbody style={{ fontSize: "1rem" }}>
+          {data.map((item, index) => {
+            const { maPhim, tenPhim, hinhAnh, moTa } = item;
+            return (
+              <tr
+                key={index}
+                // className={index % 2 === 0 ? "bg-light" : "bg-secondary"}
+              >
+                <td>{maPhim}</td>
+                <td>{tenPhim}</td>
+                <td>
+                  <img
+                    style={{ width: "70px", height: "70px" }}
+                    className="img-fluid"
+                    src={hinhAnh}
+                    alt="hinh anh"
+                  />
+                </td>
+                <td>{moTa.substring(0, 30)}</td>
+                <td>{}</td>
+                <td>
+                  <Button
+                    // onClick={() => dispatch({ type: "EDIT", payload: user.id })}
+                    className="btn btn-info mr-2"
+                  >
+                    EDIT
+                  </Button>
+                  <Button
+                    onClick={() => deleteMovie(maPhim)}
+                    className="btn btn-danger"
+                  >
+                    DELETE
+                  </Button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
+  ) : (
+    <Loader />
   );
 }

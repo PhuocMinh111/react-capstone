@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import fetchBannerApi from "../../services/banner/bannerApi";
 import { Carousel } from "react-bootstrap";
 import styled from "styled-components";
-import Slider from "react-slick";
 export default function CarouselComponent({ list }) {
   const [state, setState] = useState([]);
   useEffect(() => {
@@ -13,7 +12,6 @@ export default function CarouselComponent({ list }) {
     const data = await result.data;
     setState(data.content);
   }
-  console.log(state);
   return list ? (
     <Wrapper>
       <Carousel interval={400}>

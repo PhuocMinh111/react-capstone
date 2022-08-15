@@ -12,6 +12,7 @@ const INIT_STATE = {
     img: ["Hình ảnh", "image"],
     footer: ["thiết kế by", "designed by"],
     login: ["Đăng nhập", "login"],
+    noAcount: ["không có tài khoản ,đăng ký", "no account ,sing up"],
     logout: ["Đăng xuất", "logout"],
     technology: ["Công nghệ phim", "Technology"],
     detail: ["Chi tiết", "Detail"],

@@ -1,7 +1,8 @@
 import { SET_USER_LOGIN } from "../../constants/constants";
-
+const userString = localStorage.getItem("USER_ACESS");
+const user = JSON.parse(userString);
 const STATE = {
-  user: null
+  user: user || null,
 };
 
 export const userReducer = (state = STATE, { type, payload }) => {

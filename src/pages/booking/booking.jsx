@@ -77,7 +77,7 @@ export default function Booking() {
         <p>
           Ghế:
           {danhSachGhe.map((ele) => (
-            <span key={ele.tenGhe} className="badge badge-success">
+            <span key={ele.tenGhe} className="badge text-success badge-success">
               {ele.tenGhe}
             </span>
           ))}

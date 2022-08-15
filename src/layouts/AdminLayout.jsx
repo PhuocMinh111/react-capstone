@@ -1,15 +1,16 @@
 import {
   LaptopOutlined,
   NotificationOutlined,
-  UserOutlined
+  UserOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu } from "antd";
 import React from "react";
 import BackHome from "../components/backHome/backHome";
+import Table from "../components/Table";
 const { Header, Content, Footer, Sider } = Layout;
 const items1 = ["1", "2", "3"].map((key) => ({
   key,
-  label: `nav ${key}`
+  label: `nav ${key}`,
 }));
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
   (icon, index) => {
@@ -22,9 +23,9 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
         const subKey = index * 4 + j + 1;
         return {
           key: subKey,
-          label: `option${subKey}`
+          label: `option${subKey}`,
         };
-      })
+      }),
     };
   }
 );
@@ -34,13 +35,13 @@ const AdminLayout = () => (
     <BackHome color={"#001529"} />
     <Content
       style={{
-        padding: "0 50px"
+        padding: "0 50px",
       }}
     >
       <Layout
         className="site-layout-background"
         style={{
-          padding: "24px 0"
+          padding: "24px 0",
         }}
       >
         <Sider className="site-layout-background" width={200}>
@@ -49,7 +50,7 @@ const AdminLayout = () => (
             defaultSelectedKeys={["1"]}
             defaultOpenKeys={["sub1"]}
             style={{
-              height: "100%"
+              height: "100%",
             }}
             items={items2}
           />
@@ -57,18 +58,16 @@ const AdminLayout = () => (
         <Content
           style={{
             padding: "0 24px",
-            minHeight: 280
+            minHeight: 280,
           }}
         >
-          <table>
-            <thead></thead>
-          </table>
+          <Table />
         </Content>
       </Layout>
     </Content>
     <Footer
       style={{
-        textAlign: "center"
+        textAlign: "center",
       }}
     >
       Ant Design ©2018 Created by Ant UED

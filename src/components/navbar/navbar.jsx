@@ -7,9 +7,9 @@ import { CHANGE_LANG } from "../../constants/constants";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const userState = useSelector((state) => state.userReducer);
   const navigate = useNavigate();
   const langState = useSelector((state) => state.langReducer);
-  console.log(langState);
   return (
     <nav
       style={{ position: "sticky" }}
@@ -55,13 +55,17 @@ export default function Navbar() {
           >
             {langState.final.movie}
           </NavLink>
-          <NavLink
-            className="nav-item nav-link"
-            style={{ textDecoration: "none" }}
-            to="/login"
-          >
-            {langState.final.login}
-          </NavLink>
+          {userState.user !== null ? (
+            <h2>Hello {userState.user.name}</h2>
+          ) : (
+            <NavLink
+              className="nav-item nav-link"
+              style={{ textDecoration: "none" }}
+              to="/login"
+            >
+              {langState.final.login}
+            </NavLink>
+          )}
           <span>
             <button
               className="btn btn-success"
