@@ -8,12 +8,11 @@ export const request = axios.create({
 });
 
 request.interceptors.request.use((config) => {
-  let userInfo = localStorage.getItem("USER_ACCESS");
+  let userInfo = localStorage.getItem("USER_ACESS");
 
   if (userInfo) {
     userInfo = JSON.parse(userInfo);
 
-    // Bearer: tiêu chuẩn json web token
     config.headers.Authorization = `Bearer ${userInfo.accessToken}`;
   }
 

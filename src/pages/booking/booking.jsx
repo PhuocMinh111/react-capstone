@@ -55,6 +55,9 @@ export default function Booking() {
     try {
       const result = await bookingTicketApi(submitData);
       console.log(result);
+      setSucess(true);
+      return;
+      navigate("/");
     } catch (err) {
       setErr(err);
       console.log(err);
@@ -63,11 +66,14 @@ export default function Booking() {
 
   return roomList ? (
     success ? (
-      <div className="text-center d-flex ">
+      <div className="text-center">
         <h2 className="text-success">{final.success}</h2> <br />
-        <span>
-          <FaCheck />{" "}
-        </span>
+        <h3
+          style={{ color: "#FFBE3A", fontSize: "3rem" }}
+          className="mb-3 check"
+        >
+          <FaCheck />
+        </h3>
       </div>
     ) : (
       <div className="row w-75 mx-auto my-5">
