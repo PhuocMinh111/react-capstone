@@ -15,6 +15,7 @@ const INIT_STATE = {
     noAcount: ["không có tài khoản ,đăng ký", "no account ,sing up"],
     logout: ["Đăng xuất", "logout"],
     technology: ["Công nghệ phim", "Technology"],
+    success: ["Đặt vé thành công", "booking success"],
     detail: ["Chi tiết", "Detail"],
     showing: ["Phim đang chiếu", "Now Showing"],
     notFound: ["Không tìm thấy nội dung", "Content not found"],

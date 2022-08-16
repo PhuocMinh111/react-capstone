@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 export default function Chair(props) {
   const [isSelected, setIsSelected] = useState(false);
-  console.log(props.item);
   const populateClass = () => {
     let defaultClass = "ghe";
 

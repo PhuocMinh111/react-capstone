@@ -7,6 +7,7 @@ import MovieList from "../modules/movie-list";
 import { lazy } from "react";
 import AdminLayout from "../layouts/AdminLayout";
 import Booking from "../pages/booking/booking";
+import BookingGuard from "../guard/bookingGuard";
 const HomeLayout = lazy(() => import("../layouts/HomeLayout"));
 const Home = lazy(() => import("../pages/home/home"));
 const MovieDetail = lazy(() => import("../pages/movie-detail/movie-detail"));
@@ -30,8 +31,14 @@ export default function Routes() {
           element: <MovieList />,
         },
         {
-          path: "booking/:maLichChieu",
-          element: <Booking />,
+          path: "/",
+          element: <BookingGuard />,
+          children: [
+            {
+              path: "/booking/:maLichChieu",
+              element: <Booking />,
+            },
+          ],
         },
       ],
     },

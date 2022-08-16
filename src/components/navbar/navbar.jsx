@@ -65,7 +65,7 @@ export default function Navbar() {
                 {langState.final.hello}{" "}
                 <span className="text-primary">{userState.user.taiKhoan}</span>
               </a>
-              <button onClick={logout} className="btn btn-primary">
+              <button onClick={logout} className="btn btn-success">
                 {langState.final.logout}
               </button>
             </User>
