@@ -7,6 +7,7 @@ import MovieList from "../modules/movie-list";
 import { lazy } from "react";
 import AdminLayout from "../layouts/AdminLayout";
 import Booking from "../pages/booking/booking";
+import AdminGuard from "../guard/adminGuard";
 import BookingGuard from "../guard/bookingGuard";
 const HomeLayout = lazy(() => import("../layouts/HomeLayout"));
 const Home = lazy(() => import("../pages/home/home"));
@@ -20,15 +21,15 @@ export default function Routes() {
       children: [
         {
           path: "/",
-          element: <Home />,
+          element: <Home />
         },
         {
           path: "/movie/:movieID",
-          element: <MovieDetail />,
+          element: <MovieDetail />
         },
         {
           path: "/movieList",
-          element: <MovieList />,
+          element: <MovieList />
         },
         {
           path: "/",
@@ -36,20 +37,21 @@ export default function Routes() {
           children: [
             {
               path: "/booking/:maLichChieu",
-              element: <Booking />,
-            },
-          ],
-        },
-      ],
+              element: <Booking />
+            }
+          ]
+        }
+      ]
     },
     {
       path: "/login",
-      element: <Login />,
+      element: <Login />
     },
     {
-      path: "/admin",
-      element: <AdminLayout />,
-    },
+      path: "/",
+      element: <AdminGuard />,
+      children: [{ path: "/admin", element: <AdminLayout /> }]
+    }
   ]);
   return routing;
 }

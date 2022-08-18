@@ -9,7 +9,7 @@ import SignIn from "../../modules/sign-in";
 export default function Login() {
   const [value, setValue] = useState({
     taiKhoan: "",
-    matKhau: "",
+    matKhau: ""
   });
   const navigate = useNavigate();
   const { final } = useSelector((state) => state.langReducer);
@@ -19,7 +19,7 @@ export default function Login() {
   const handleChange = (e) => {
     setValue({
       ...value,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
     setErr("");
   };
@@ -27,6 +27,7 @@ export default function Login() {
     e.preventDefault();
     loginUser();
   };
+
   async function loginUser() {
     try {
       const result = await fetchUserLogin(value);
@@ -34,7 +35,7 @@ export default function Login() {
       // const data = await result.data;
       dispatch({ type: SET_USER_LOGIN, payload: result.data.content });
       localStorage.setItem("USER_ACESS", JSON.stringify(result.data.content));
-      navigate("/");
+      navigate(-1);
     } catch (err) {
       const error = err.response.data.content;
       setErr(error);
