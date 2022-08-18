@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../components/loader";
 import Chair from "../../modules/chair";
 import { bookingTicketApi, fetchRoomListApi } from "../../services/booking";
+import styled from "styled-components";
 
 export default function Booking() {
   const [danhSachGhe, setDanhSachGhe] = useState([]);
@@ -44,20 +45,21 @@ export default function Booking() {
     const danhSachVe = danhSachGhe.map((ele) => {
       return {
         maGhe: ele.maGhe,
-        giaVe: ele.giaVe,
+        giaVe: ele.giaVe
       };
     });
 
     const submitData = {
       maLichChieu: params.maLichChieu,
-      danhSachVe,
+      danhSachVe
     };
     try {
       const result = await bookingTicketApi(submitData);
       console.log(result);
       setSucess(true);
-      return;
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     } catch (err) {
       setErr(err);
       console.log(err);
@@ -66,15 +68,12 @@ export default function Booking() {
 
   return roomList ? (
     success ? (
-      <div className="text-center">
+      <Success className="text-center">
         <h2 className="text-success">{final.success}</h2> <br />
-        <h3
-          style={{ color: "#FFBE3A", fontSize: "3rem" }}
-          className="mb-3 check"
-        >
-          <FaCheck />
+        <h3 style={{ fontSize: "3rem" }} className="mb-3 check text-success">
+          <FaCheck className="check" />
         </h3>
-      </div>
+      </Success>
     ) : (
       <div className="row w-75 mx-auto my-5">
         <div className="col-8">
@@ -120,6 +119,7 @@ export default function Booking() {
           <button onClick={handleBookingTicket} className="btn btn-info">
             ĐẶT VÉ
           </button>
+          {err && <span className="text-danger">* {err}</span>}
         </div>
       </div>
     )
@@ -127,3 +127,8 @@ export default function Booking() {
     <Loader />
   );
 }
+const Success = styled.div`
+  .check {
+    border-radius: 50%;
+  }
+`;

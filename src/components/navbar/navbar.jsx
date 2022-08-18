@@ -4,6 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { CHANGE_LANG, LOG_OUT } from "../../constants/constants";
+import LangSeclect from "../langSeclect";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
@@ -78,12 +79,8 @@ export default function Navbar() {
               {langState.final.login}
             </NavLink>
           )}
-          <span>
-            <button
-              className="btn btn-success"
-              onClick={() => dispatch({ type: CHANGE_LANG })}
-            >{`${langState.final.flag}${langState.final.lang}`}</button>
-          </span>
+          <LangSeclect />
+
           {/* <form onSubmit={handleSearch} className="form-inline my-2 my-lg-0">
             <input
               // style={{
