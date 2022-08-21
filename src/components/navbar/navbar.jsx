@@ -5,20 +5,24 @@ import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import { CHANGE_LANG, LOG_OUT } from "../../constants/constants";
 import LangSeclect from "../langSeclect";
+import { Switch } from "antd";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.userReducer);
   const navigate = useNavigate();
+  const light = "navbar-light bg-light";
+  const dark = "navbar-dark bg-dark";
   const langState = useSelector((state) => state.langReducer);
-  console.log(userState);
+  const theme = useSelector((state) => state.themeReducer);
   function logout() {
     dispatch({ type: LOG_OUT });
   }
+  console.log(theme);
   return (
     <nav
       style={{ position: "sticky" }}
-      className="navbar px-3 navbar-expand-lg navbar-light bg-light"
+      className={`navbar px-3 navbar-expand-lg ${theme.light ? dark : light}`}
     >
       <Link to="/" style={{ textDecoration: "none" }}>
         <a className="navbar-brand">
@@ -80,25 +84,6 @@ export default function Navbar() {
             </NavLink>
           )}
           <LangSeclect />
-
-          {/* <form onSubmit={handleSearch} className="form-inline my-2 my-lg-0">
-            <input
-              // style={{
-              //   display: isSearch ? "inline" : "none"
-              // }}
-              className="form-control mr-sm-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button
-              onClick={() => setSearch(true)}
-              className="btn btn-outline-success my-2 my-sm-0"
-              type="submit"
-            >
-              <FaSearch />
-            </button>
-          </form> */}
         </div>
       </div>
     </nav>

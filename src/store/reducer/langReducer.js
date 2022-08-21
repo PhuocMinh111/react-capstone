@@ -1,5 +1,10 @@
 import { CHANGE_LANG } from "../../constants/constants";
-const flags = ["/img/vietnam.png", "/img/usa.png", "/img/china.png"];
+const flags = [
+  "/img/vietnam.png",
+  "/img/usa.png",
+  "/img/china.png",
+  "/img/spain.png",
+];
 const INIT_STATE = {
   index: 0,
   value: {
@@ -16,7 +21,7 @@ const INIT_STATE = {
       "không có tài khoản ,đăng ký",
       "no account ,sign up",
       "報名",
-      "sin cuenta, registrate"
+      "sin cuenta, registrate",
     ],
     logout: ["Đăng xuất", "logout", "登出", "cerrar sesión"],
     technology: ["Công nghệ phim", "Technology", "技術", "Tecnología"],
@@ -27,13 +32,13 @@ const INIT_STATE = {
       "Không tìm thấy nội dung",
       "Content not found",
       "未找到內容",
-      "extraviado"
+      "extraviado",
     ],
     payment: [
       "Chấp nhận thanh toán",
       "Payment Accepted by",
       "付款接受者",
-      "Pago"
+      "Pago",
     ],
     minute: ["Phút", "minute", "分鐘", "minuto"],
     hello: ["Xin chào", "Hello", "你好", "Hola"],
@@ -41,9 +46,9 @@ const INIT_STATE = {
     more: ["Xem thêm", "more", "更多的", "más"],
     social: ["Kết nối với chúng tôi", "contact with us", "接觸", "contacto"],
     lang: ["vn", "Eng", "中國人", "española"],
-    flag: flags
+    flags: flags,
   },
-  final: {}
+  final: {},
 };
 
 export const langReducer = (state = INIT_STATE, { type, payload }) => {

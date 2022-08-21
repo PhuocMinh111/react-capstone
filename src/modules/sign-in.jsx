@@ -3,9 +3,16 @@ import { useEffect } from "react";
 import { useState } from "react";
 import checkValid from "../utils/validation";
 import { fetchSignInApi } from "../services/user";
+import { Navigate, useNavigate } from "react-router-dom";
 export default function SignIn(props) {
-  const [value, setValue] = useState({});
+  const [value, setValue] = useState({
+    taiKhoan: "",
+    hoTen: "",
+    email: "",
+  });
+  const [submit, setSubmit] = useState(false);
   const [err, setErr] = useState({});
+  const navigate = useNavigate();
   function handleChange(e) {
     setValue({
       [e.target.name]: e.target.value,
@@ -13,20 +20,25 @@ export default function SignIn(props) {
   }
   function handleSubmit(e) {
     e.preventDefault();
+    // setSubmit(true);
+    console.log(value);
     setErr(checkValid(value));
-    console.log(err);
-    if (Object.keys(err).length > 1) return;
-    fetchSignIn();
+    // console.log(value);
+    // if (Object.keys(err).length > 1) return;
+    // fetchSignIn();
     // setErr({});
   }
   useEffect(() => {
-    if (Object.keys(err).length > 0) return;
-
+    // setErr(checkValid(value));
+    if (Object.keys(err).length > 1) return;
+    fetchSignIn();
+    navigate("/login");
     // setErr({);
   }, [err]);
 
   async function fetchSignIn() {
-    if (Object.keys(err).length > 0) return;
+    console.log(value);
+    // if (Object.keys(err).length > 0) return;
     const result = await fetchSignInApi(value);
     console.log(result);
   }

@@ -11,12 +11,13 @@ export default function MovieList({ movieToShow, btn }) {
   useEffect(() => {
     fetchMovieList();
   }, []);
+
   async function fetchMovieList() {
     const result = await fetchMovieListApi();
 
     const data = result.data;
     // if (movieToShow !== null) {
-    //   console.log(movieToShow);
+
     //    setData(data.content.filter((ele, index) => index < movieToShow));
     // }
     setData(data.content);

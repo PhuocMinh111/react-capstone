@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "antd/dist/antd.css";
 import store from "./store/config";
 import { Provider } from "react-redux";
+import "flag-icons/css/flag-icons.min.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

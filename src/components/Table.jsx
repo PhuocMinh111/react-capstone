@@ -15,7 +15,6 @@ export default function Table() {
     try {
       const result = await fetchMovieListApi();
       // const result = await data.result;
-      console.log(result);
       setData(result.data.content);
     } catch (err) {
       console.log(err);
@@ -42,7 +41,7 @@ export default function Table() {
                 key={index}
                 // className={index % 2 === 0 ? "bg-light" : "bg-secondary"}
               >
-                <td>{maPhim}</td>
+                <td className="text-success">{maPhim}</td>
                 <td>{tenPhim}</td>
                 <td>
                   <img

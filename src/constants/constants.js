@@ -4,3 +4,4 @@ export const TOKEN =
 export const SET_USER_LOGIN = "SET_USER_LOGIN";
 export const CHANGE_LANG = "CHANGE_LANG";
 export const LOG_OUT = "LOG_OUT";
+export const LIGHT_THEME = "LIGHT_THEME";

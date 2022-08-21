@@ -8,11 +8,10 @@ export default function AdminGuard() {
   const [admin, setAdmin] = useState(true);
   const navigate = useNavigate();
 
-  console.log(user);
-
   useEffect(() => {
     if (user.user === null) navigate("/login");
-    if (user.user !== null && user.user.type !== "admin") setAdmin(false);
+    if (user.user !== null && user.user.maLoaiNguoiDung !== "QuanTri")
+      setAdmin(false);
   }, [user]);
 
   return admin ? <Outlet /> : <NotAdmin />;
@@ -30,7 +29,7 @@ function NotAdmin() {
   return (
     <>
       <BackHome />
-      <div className="container text-danger text-center">
+      <div className="container mt-3 text-danger text-danger text-center">
         <h2>Not Admin</h2>
       </div>
       <Footer />
