@@ -18,7 +18,7 @@ export default function Navbar() {
   function logout() {
     dispatch({ type: LOG_OUT });
   }
-  console.log(theme);
+  console.log(langState);
   return (
     <nav
       style={{ position: "sticky" }}

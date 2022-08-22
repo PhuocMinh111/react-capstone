@@ -8,6 +8,9 @@ export default function MovieList({ movieToShow, btn }) {
   const [data, setData] = useState([]);
   const { final } = useSelector((state) => state.langReducer);
   const navigate = useNavigate();
+  const light = "bg-light ";
+  const dark = "bg-dark ";
+  const theme = useSelector((state) => state.themeReducer);
   useEffect(() => {
     fetchMovieList();
   }, []);
@@ -24,8 +27,10 @@ export default function MovieList({ movieToShow, btn }) {
   }
 
   return (
-    <Wrapper className="row mx-auto py-4 mt-5">
-      <h2 className="mb-3">{final.showing}:</h2>
+    <Wrapper className={`row mx-auto py-4 mt-5 ${theme.light ? dark : light}`}>
+      <h2 className={`mb-3 ${theme.light ? "text-dark" : "text-light"}`}>
+        {final.showing}:
+      </h2>
       {data.slice(0, movieToShow).map((item, index) => {
         return <SingleMovie key={index} movie={item} />;
       })}

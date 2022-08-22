@@ -11,6 +11,7 @@ export default function MovieDetail() {
   const [movie, setMovie] = useState();
   const [movieId, setMovieId] = useState("");
   const imgRef = useRef(null);
+  const theme = useSelector((state) => state.themeReducer);
   const [heThongRap, setHeThongRap] = useState();
   const param = useParams();
   const opt = {
@@ -27,6 +28,7 @@ export default function MovieDetail() {
   useEffect(() => {
     fetchMovie();
   }, []);
+
   async function fetchMovie() {
     const result = await fetchSingleMovieApi(param.movieID);
     const data = await result.data;
@@ -41,7 +43,7 @@ export default function MovieDetail() {
 
   console.log(heThongRap);
   return movie ? (
-    <Wrapper className="p-lg-5 p-sm-0 row">
+    <Wrapper className={`p-lg-5 p-sm-0 row`}>
       <div className="col-lg-4 col-sm-12">
         <img
           ref={imgRef}
@@ -52,9 +54,15 @@ export default function MovieDetail() {
         />
       </div>
       <div className="col-lg-8 sol-sm-12 p-3">
-        <h3>{movie.content.tenPhim}</h3>
+        <h3 className={theme.light ? "text-light" : "text-dark"}>
+          {movie.content.tenPhim}
+        </h3>
         <div className="" id="player">
-          <h4 className="d-inline">trailer :</h4>
+          <h4
+            className={`d-inline ${theme.light ? "text-light" : "text-dark"}`}
+          >
+            trailer :
+          </h4>
           {movieId ? <Youtube opts={opt} videoId={movieId} /> : <Loader />}
         </div>
         <p>

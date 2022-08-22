@@ -6,9 +6,12 @@ import { useSelector } from "react-redux";
 export default function SingleMovie({ movie }) {
   const navigate = useNavigate();
   const { final } = useSelector((state) => state.langReducer);
+  const theme = useSelector((state) => state.themeReducer);
   return (
     <Card
-      className="col-lg-3 mb-1 mx-auto col-sm-12 mx-2"
+      className={`col-lg-3 mb-2 py-2 mx-auto col-sm-12 mx-2 ${
+        theme.light ? "bg-secondary" : "bg-light"
+      }`}
       style={{ width: "18rem" }}
     >
       {/* <Wrapper> */}

@@ -17,10 +17,11 @@ export default function LangSeclect() {
   };
   useEffect(() => {
     dispatch({ type: CHANGE_LANG, payload: state });
+  }, [state]);
+  useEffect(() => {
     dispatch({ type: LIGHT_THEME, payload: lightMode });
-  }, [state, lightMode]);
+  }, [lightMode]);
 
-  console.log(langState);
   return (
     <Select>
       <select

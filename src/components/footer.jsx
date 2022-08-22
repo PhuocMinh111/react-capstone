@@ -19,6 +19,9 @@ export default function Footer() {
               <div className="brand">MovieNew</div>
             </a>
           </Link>
+          <p className="text-secondary">{`${
+            final.footer
+          } by Phuoc ${new Date().getFullYear()}`}</p>
         </div>
         <div className="col-lg-6 col-md-12">
           <h6 className="text-center mb-2 text-light">{final.technology}</h6>
